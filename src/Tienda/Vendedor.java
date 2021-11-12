@@ -19,13 +19,13 @@ public class Vendedor extends Usuarios {
     private String PersonajeFav;
     private double Stars;
 
-    public Vendedor(CuentaBancaria bank,double dineroRecibido, String PersonajeFav, double Stars, String nombre, String username, String password, int Edad) throws MiExcepcion {
+    public Vendedor(CuentaBancaria bank,double dineroRecibido, String PersonajeFav, String nombre, String username, String password, int Edad) throws MiExcepcion {
         super(nombre, username, password, Edad);
         this.bank = bank;
         this.Games = new ArrayList();
         this.dineroRecibido = dineroRecibido;
         this.PersonajeFav = PersonajeFav;
-        this.Stars = Stars;
+        setStars(0);
     
     }
 
@@ -66,8 +66,17 @@ public class Vendedor extends Usuarios {
     }
 
     public void setStars(double Stars) {
-        this.Stars = Stars;
+        
+        this.Stars = Stars/100+this.Stars;
     }
+    
+    
+    public void crearJuego(String nombre, int relaseDate, int cantidad, double precio){
+    
+        Games.add(new Videojuegos(nombre, relaseDate, cantidad, precio));
+    
+    }
+    
     
     
     
