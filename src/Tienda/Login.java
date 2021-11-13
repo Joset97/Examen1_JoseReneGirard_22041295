@@ -15,13 +15,15 @@ import java.util.logging.Logger;
  */
 public class Login extends javax.swing.JFrame {
 
+    ArrayLUsers as;
+
     /**
      * Creates new form Login
+     *
      * @throws Tienda.MiExcepcion
      */
     public Login() throws MiExcepcion {
         initComponents();
-    
 
     }
 
@@ -68,6 +70,11 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("Password:");
 
         jButton1.setText("Login");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -174,11 +181,47 @@ public class Login extends javax.swing.JFrame {
 
     private void BotonRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRegistrarMouseClicked
         // TODO add your handling code here:
-        
-        
+Registrar r= new Registrar();
+r.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_BotonRegistrarMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+        String username = TextoUsername.getText();
+        String pass = TextoPassWord.getText();
+
+        for (int i = 0; i < as.users.size(); i++) {
+
+            if (as.users.get(i) instanceof Admin && as.users.get(i).getUsername().equals(username) && as.users.get(i).getPassword().equals(pass)) {
+
+                AdminControllerPad n = new AdminControllerPad();
+                n.setVisible(true);
+
+                this.setVisible(false);
+            }
+            if (as.users.get(i) instanceof Comprador && as.users.get(i).getUsername().equals(username) && as.users.get(i).getPassword().equals(pass)) {
+
+                CompradorPad n = new CompradorPad();
+                n.setVisible(true);
+
+                this.setVisible(false);
+            }
+            if (as.users.get(i) instanceof Vendedor && as.users.get(i).getUsername().equals(username) && as.users.get(i).getPassword().equals(pass)) {
+
+                VendedorPad n = new VendedorPad();
+                n.setVisible(true);
+
+                this.setVisible(false);
+            }
+
+            
+            
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -230,7 +273,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
-ArrayList <Usuarios> users;
 
 }

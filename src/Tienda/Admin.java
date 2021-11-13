@@ -14,6 +14,11 @@ public class Admin extends Usuarios{
     public Admin(String nombre, String username, String password, int Edad) throws MiExcepcion {
         super(nombre, username, password, Edad);
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" + '}';
+    }
     
     
     

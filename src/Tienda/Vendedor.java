@@ -76,6 +76,18 @@ public class Vendedor extends Usuarios {
         Games.add(new Videojuegos(nombre, relaseDate, cantidad, precio));
     
     }
+
+    public void comprarJuego(int pos){
+
+       int cantidadAct= Games.get(pos).getCantidad();
+       Games.get(pos).setCantidad(cantidadAct-1);
+       
+    }
+    
+    @Override
+    public String toString() {
+        return "Vendedor{" + "\nbank=" + bank + ", \nGames=" + Games + ", \ndineroRecibido=" + dineroRecibido + ", \nPersonajeFav=" + PersonajeFav + ", \nStars=" + Stars + '}';
+    }
     
     
     

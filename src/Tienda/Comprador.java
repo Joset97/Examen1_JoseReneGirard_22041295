@@ -18,9 +18,9 @@ public class Comprador extends Usuarios {
     private double dineroAct;
     private String PersonajeFav;
 
-    public Comprador(String PersonajeFav,int NoDeCuenta,double saldo , int dineroAct, String nombre, String username, String password, int Edad) throws MiExcepcion {
+    public Comprador(String PersonajeFav,CuentaBancaria CB, int dineroAct, String nombre, String username, String password, int Edad) throws MiExcepcion {
         super(nombre, username, password, Edad);
-        this.bank =new CuentaBancaria(saldo, NoDeCuenta);
+        this.bank =CB;
         this.Games = new ArrayList();
         this.dineroAct = dineroAct;
         this.PersonajeFav= PersonajeFav;
@@ -78,6 +78,11 @@ public class Comprador extends Usuarios {
    }
     
 }
+
+    @Override
+    public String toString() {
+        return "Comprador{" + "\nbank=" + bank + ", \nGames=" + Games + ", \ndineroAct=" + dineroAct + ", \nPersonajeFav=" + PersonajeFav + '}';
+    }
 
     
     

@@ -5,12 +5,16 @@
  */
 package Tienda;
 
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author jrgir
  */
 public class Registrar extends javax.swing.JFrame {
-
+    ArrayLUsers as;
     /**
      * Creates new form Registrar
      */
@@ -28,13 +32,6 @@ public class Registrar extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
-        buttonGroup6 = new javax.swing.ButtonGroup();
-        buttonGroup7 = new javax.swing.ButtonGroup();
-        buttonGroup8 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -48,10 +45,10 @@ public class Registrar extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         TextFavpersonaje = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        NOtext = new javax.swing.JTextField();
         bottonAdmin = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        RbotonComprador = new javax.swing.JRadioButton();
+        RbotonVendedor = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,18 +94,23 @@ public class Registrar extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Comprador");
+        buttonGroup1.add(RbotonComprador);
+        RbotonComprador.setText("Comprador");
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Vendedor");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(RbotonVendedor);
+        RbotonVendedor.setText("Vendedor");
+        RbotonVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                RbotonVendedorActionPerformed(evt);
             }
         });
 
         jButton1.setText("Registrarse");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -135,7 +137,7 @@ public class Registrar extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(TextUname)
                     .addComponent(TextEdad)
-                    .addComponent(jTextField6))
+                    .addComponent(NOtext))
                 .addGap(73, 73, 73))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,8 +150,8 @@ public class Registrar extends javax.swing.JFrame {
                             .addComponent(bottonAdmin)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton3))
+                                    .addComponent(RbotonComprador)
+                                    .addComponent(RbotonVendedor))
                                 .addGap(65, 65, 65)
                                 .addComponent(jButton1)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -182,19 +184,19 @@ public class Registrar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextFavpersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(NOtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(bottonAdmin)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton3))
+                        .addComponent(RbotonComprador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(RbotonVendedor))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jButton1)))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,13 +229,75 @@ public class Registrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bottonAdminActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void RbotonVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RbotonVendedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_RbotonVendedorActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+
+     
+        
+
+        int edad = TextEdad.getText().indexOf(TextEdad.getText());
+        String pf = TextFavpersonaje.getText();
+        String name = TextName.getText();
+        String pass = TextPass.getText();
+        String usename = TextUname.getText();
+        int NoCuenta= NOtext.getText().indexOf(NOtext.getText());
+        if(bottonAdmin.isEnabled()){
+        
+            try {
+                Admin ad =new Admin(name, usename, pass, edad);
+                     as.setUsersAR(ad);
+                
+            } catch (MiExcepcion ex) {
+                Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+  
+        }
+        if(   RbotonComprador.isEnabled()){
+        
+            try {
+                Random rd = new Random();
+                
+                int randomv1 = rd.nextInt(10000) + 2000;
+                int randomcm2 = rd.nextInt(800) + 100;
+                CuentaBancaria cb = new CuentaBancaria(randomv1,NoCuenta);
+                
+                Comprador cp= new Comprador(pf, cb, randomcm2, name, usename, pass, edad);
+                as.setUsersAR(cp);
+                
+            } catch (MiExcepcion ex) {
+                Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        
+        
+        }if(RbotonVendedor.isEnabled()){
+        
+          try {
+                Random rd = new Random();
+                
+                int randomv1 = rd.nextInt(10000) + 2000;
+                int randomcm2 = rd.nextInt(800) + 100;
+                CuentaBancaria cb = new CuentaBancaria(randomv1,NoCuenta);
+                
+                Vendedor cp= new Vendedor(cb,0, pf, name, usename, pass, edad);
+                as.setUsersAR(cp);
+                
+            } catch (MiExcepcion ex) {
+                Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -271,6 +335,9 @@ public class Registrar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField NOtext;
+    private javax.swing.JRadioButton RbotonComprador;
+    private javax.swing.JRadioButton RbotonVendedor;
     private javax.swing.JTextField TextEdad;
     private javax.swing.JTextField TextFavpersonaje;
     private javax.swing.JTextField TextName;
@@ -278,13 +345,6 @@ public class Registrar extends javax.swing.JFrame {
     private javax.swing.JTextField TextUname;
     private javax.swing.JRadioButton bottonAdmin;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
-    private javax.swing.ButtonGroup buttonGroup6;
-    private javax.swing.ButtonGroup buttonGroup7;
-    private javax.swing.ButtonGroup buttonGroup8;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -294,8 +354,5 @@ public class Registrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
